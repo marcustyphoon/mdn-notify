@@ -1,28 +1,27 @@
 {
   "manifest_version": 3,
 
-  "name": "Example Web Extension",
-  "description": "example",
+  "name": "XKit Rewritten AMO Notifier",
+  "description": "Refreshes AMO so you don't have to!",
   "version": "0.1",
+
+  "permissions": ["notifications"],
 
   "web_accessible_resources": [
     {
-      "matches": ["*://*.example.com/*"],
+      "matches": ["*://addons.mozilla.org/*"],
       "resources": ["*.js"]
     }
   ],
   "content_scripts": [
     {
-      "matches": ["*://*.example.com/*"],
-      "js": ["content_scripts/example.js"]
+      "matches": ["*://addons.mozilla.org/*"],
+      "js": ["content_script.js"]
     }
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
 
-  "minimum_chrome_version": "102",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "example@example.com",
-      "strict_min_version": "102.0"
-    }
-  }
+  "minimum_chrome_version": "102"
 }
